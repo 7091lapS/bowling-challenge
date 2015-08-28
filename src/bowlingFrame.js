@@ -1,4 +1,5 @@
-var BowlingFrame = function() {
+var BowlingFrame = function(number) {
+  this.number = number;
   this.rolls = [];
   this.bonus = 0;
   this.score = 0;
