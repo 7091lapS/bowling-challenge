@@ -11,8 +11,8 @@ describe('Bowling Frame', function() {
   });
 
   it('can add the first roll', function() {
-    var rollOne = 5;
-    frame.addRoll(rollOne);
+    // var rollOne = 5;
+    frame.addRoll(5);
     expect(frame.rolls).toEqual([5]);
   });
 
@@ -27,12 +27,20 @@ describe('Bowling Frame', function() {
     expect(frame.bonus).toBeDefined();
   });
 
+  it('has a partial score without the bonuses', function() {
+    frame.addRoll(5);
+    frame.addRoll(4);
+    frame.addPartial(frame.rolls);
+    expect(frame.partialScore).toEqual(9);
+  });
+
   it('has a final score which is the sum of the rolls and the bonus points', function() {
-    frame.addRoll(5);
-    frame.addRoll(5);
     frame.bonus = 5;
-    frame.addUpScore(frame.rolls, 5);
-    expect(frame.score).toEqual(15);
+    frame.addRoll(5);
+    frame.addRoll(4);
+    frame.addPartial(frame.rolls);
+    frame.addUpScore(frame.partialScore, 5);
+    expect(frame.score).toEqual(14);
   });
 
 
