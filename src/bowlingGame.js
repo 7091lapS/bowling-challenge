@@ -3,7 +3,7 @@ var BowlingGame = function() {
 };
 
 BowlingGame.prototype.startGame = function (frame) {
-  for(var i = 0; i < 10; i++) {
+  for(var i = 1; i < 11; i++) {
     this.frames['frame' + i ] = new BowlingFrame(i);
-  }
+  };
 };
