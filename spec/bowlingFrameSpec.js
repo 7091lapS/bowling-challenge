@@ -9,19 +9,19 @@ describe('Bowling Frame', function() {
     expect(frame.rolls).toBeDefined();
 
   });
+  //
+  // it('can add the first roll', function() {
+  //   // var rollOne = 5;
+  //   frame.addRoll(5);
+  //   expect(frame.rolls).toEqual([5]);
+  // });
 
-  it('can add the first roll', function() {
-    // var rollOne = 5;
-    frame.addRoll(5);
-    expect(frame.rolls).toEqual([5]);
-  });
-
-  it('throws an error if you try to add a roll after a strike', function() {
-    var rollOne = 10;
-    var rollTwo = 4;
-    frame.addRoll(rollOne);
-    expect(function() {frame.addRoll(rollTwo)}).toThrow('you have already knocked all the pins');
-  });
+  // it('throws an error if you try to add a roll after a strike', function() {
+  //   var rollOne = 10;
+  //   var rollTwo = 4;
+  //   frame.addRoll(rollOne);
+  //   expect(function() {frame.addRoll(rollTwo)}).toThrow('you have already knocked all the pins');
+  // });
 
   it('can receive bonus points', function() {
     expect(frame.bonus).toBeDefined();

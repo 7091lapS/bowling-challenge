@@ -13,6 +13,7 @@ BowlingFrame.prototype.addRoll = function (roll) {
     throw 'you have already knocked all the pins';
   };
   this.rolls.push(roll);
+
 };
 
 BowlingFrame.prototype.addPartial = function (rolls) {
@@ -23,8 +24,17 @@ BowlingFrame.prototype.addUpScore = function (partial, bonus) {
   this.score = partial + this.bonus;
 };
 
-BowlingFrame.prototype.isStrike = function(roll) {
+BowlingFrame.prototype.hasStrike = function(roll) {
   if (this.rolls[0] == 10) {
     return true;
   };
+
+
+// I'll have to change this for frame 10
+BowlingFrame.prototype.isFull = function () {
+  if (this.length === 2) {
+    return true;
+  };
+};
+
 };
