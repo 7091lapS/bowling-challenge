@@ -1,6 +1,7 @@
 var BowlingGame = function() {
   this.frames = {};
-  this.currentFrame;
+  // this.currentFrame;
+  this.previousFrame;
   this.counter = 1
 
 };
@@ -18,9 +19,12 @@ BowlingGame.prototype.addRoll = function (roll) {
     throw 'invalid amount of pins';
   }
   else {
-    this.currentFrame.rolls.push(roll)
+    this.currentFrame.rolls.push(roll);
+    this.currentFrame.addPartial();
     if ( this.currentFrame.isFull() || this.currentFrame.hasStrike()) {
       this.currentFrame = this.frames['frame' + (this.counter += 1)];
+      this.previousFrame = this.frames['frame' + (this.counter - 1)];
+
     };
   };
 };

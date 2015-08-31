@@ -34,18 +34,21 @@ describe('Bowling Game', function() {
     expect(game.currentFrame).toEqual(game.frames.frame2);
   });
 
-  it('changes currentFrame when frame has a strike', function() {
+  it('changes current frame when frame has a strike', function() {
     game.addRoll(10);
     expect(game.currentFrame).toEqual(game.frames.frame2);
   });
 
+  it('knows the previous frame', function() {
+    expect(game.previousFrame).toEqual(game.frames.frame1);
+  });
 
-  // it('passes the rolls to the first frame', function () {
-  //
-  //   game.calculatePartial(frame, roll1, roll2);
-  //   expect(game.frames.frame1.rolls).toEqual([4,5]);
-  //   expect(game.frames.frame1.)
-  //
-  // });
+  it('in case of spare, adds the bonus for the previous frame', function() {
+    game.addRoll(9);
+    game.addRoll(1);
+    game.addRoll(5);
+    expect(game.previousFrame.bonus).toEqual(5);
+  });
+
 
 });

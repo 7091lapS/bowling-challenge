@@ -7,29 +7,36 @@ var BowlingFrame = function() {
 
 };
 
-BowlingFrame.prototype.addRoll = function (roll) {
-  if (this.rolls[0] == 10) {
-    this.rolls.push(0);
-    throw 'you have already knocked all the pins';
-  };
-  this.rolls.push(roll);
-};
-
 BowlingFrame.prototype.addPartial = function (rolls) {
-  this.partialScore = (this.rolls[0] + this.rolls[1]);
+  if (this.hasStrike) {
+    this.partialScore = 10;
+  }
+  else {
+    this.partialScore = (this.rolls[0] + this.rolls[1]);
+  };
 };
 
 BowlingFrame.prototype.addUpScore = function (partial, bonus) {
   this.score = partial + this.bonus;
 };
 
-BowlingFrame.prototype.hasStrike = function(roll) {
+BowlingFrame.prototype.hasStrike = function() {
   if (this.rolls[0] === 10) {
     return true;
   }
   else {
     return false;
   };
+};
+
+BowlingFrame.prototype.hasSpare = function() {
+  if (this.partialScore === 10 && this.rolls[0] != 10) {
+    return true;
+  }
+  else {
+    return false;
+  };
+
 };
 
 // I'll have to change this for frame 10
