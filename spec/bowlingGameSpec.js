@@ -29,8 +29,13 @@ describe('Bowling Game', function() {
   });
 
   it('changes currentFrame when frame is complete', function() {
-    game.currentFrame.addRoll(4);
-    game.currentFrame.addRoll(5);
+    game.addRoll(4);
+    game.addRoll(5);
+    expect(game.currentFrame).toEqual(game.frames.frame2);
+  });
+
+  it('changes currentFrame when frame has a strike', function() {
+    game.addRoll(10);
     expect(game.currentFrame).toEqual(game.frames.frame2);
   });
 

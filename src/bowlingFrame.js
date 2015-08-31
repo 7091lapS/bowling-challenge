@@ -5,7 +5,7 @@ var BowlingFrame = function() {
   this.score = 0;
   this.partialScore = 0;
 
-}
+};
 
 BowlingFrame.prototype.addRoll = function (roll) {
   if (this.rolls[0] == 10) {
@@ -13,7 +13,6 @@ BowlingFrame.prototype.addRoll = function (roll) {
     throw 'you have already knocked all the pins';
   };
   this.rolls.push(roll);
-
 };
 
 BowlingFrame.prototype.addPartial = function (rolls) {
@@ -25,16 +24,20 @@ BowlingFrame.prototype.addUpScore = function (partial, bonus) {
 };
 
 BowlingFrame.prototype.hasStrike = function(roll) {
-  if (this.rolls[0] == 10) {
+  if (this.rolls[0] === 10) {
     return true;
-  };
-
-
-// I'll have to change this for frame 10
-BowlingFrame.prototype.isFull = function () {
-  if (this.length === 2) {
-    return true;
+  }
+  else {
+    return false;
   };
 };
 
+// I'll have to change this for frame 10
+BowlingFrame.prototype.isFull = function () {
+  if (this.rolls.length === 2) {
+    return true;
+  }
+  else {
+    return false
+  };
 };
