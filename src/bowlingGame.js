@@ -1,12 +1,12 @@
 var BowlingGame = function() {
   this.frames = {};
-  // this.currentFrame;
+  this.currentFrame;
   this.previousFrame;
   this.counter = 1
 
 };
 
-BowlingGame.prototype.startGame = function (frame) {
+BowlingGame.prototype.startGame = function () {
   for(var i = 1; i < 11; i++) {
     this.frames['frame' + i ] = new BowlingFrame(i);
   };
@@ -20,11 +20,17 @@ BowlingGame.prototype.addRoll = function (roll) {
   }
   else {
     this.currentFrame.rolls.push(roll);
+    this.addSpareBonus();
     this.currentFrame.addPartial();
     if ( this.currentFrame.isFull() || this.currentFrame.hasStrike()) {
       this.currentFrame = this.frames['frame' + (this.counter += 1)];
       this.previousFrame = this.frames['frame' + (this.counter - 1)];
-
     };
+  };
+};
+
+BowlingGame.prototype.addSpareBonus = function () {
+  if (this.currentFrame != this.frames.frame1 && this.previousFrame.isFull() && this.previousFrame.hasSpare()) {
+    this.previousFrame.bonus = this.currentFrame.rolls[0]
   };
 };

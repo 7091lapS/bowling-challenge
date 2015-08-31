@@ -7,8 +7,8 @@ var BowlingFrame = function() {
 
 };
 
-BowlingFrame.prototype.addPartial = function (rolls) {
-  if (this.hasStrike) {
+BowlingFrame.prototype.addPartial = function () {
+  if (this.rolls[0] === 10) {
     this.partialScore = 10;
   }
   else {
@@ -41,10 +41,16 @@ BowlingFrame.prototype.hasSpare = function() {
 
 // I'll have to change this for frame 10
 BowlingFrame.prototype.isFull = function () {
-  if (this.rolls.length === 2) {
+  if (this.rolls.length === 2 || this.hasStrike()) {
     return true;
   }
   else {
     return false
   };
 };
+
+
+// BowlingFrame.prototype.addSpareBonus = function (previousFrame) {
+//     this.bonus = previousFrame.rolls[0];
+//   };
+// };
