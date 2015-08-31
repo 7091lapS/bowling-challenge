@@ -22,10 +22,16 @@ BowlingGame.prototype.addRoll = function (roll) {
     this.currentFrame.rolls.push(roll);
     this.addSpareBonus();
     this.currentFrame.addPartial();
+    this.currentFrame.sumHdcp();
+
+    // this.previousFrame.sumHdcp();
+
     if ( this.currentFrame.isFull() || this.currentFrame.hasStrike()) {
       this.currentFrame = this.frames['frame' + (this.counter += 1)];
       this.previousFrame = this.frames['frame' + (this.counter - 1)];
+      this.previousFrame.sumHdcp();
     };
+    // this.previousFrame.sumHdcp();
   };
 };
 
@@ -34,3 +40,9 @@ BowlingGame.prototype.addSpareBonus = function () {
     this.previousFrame.bonus = this.currentFrame.rolls[0]
   };
 };
+
+// BowlingGame.prototype.addHdcp = function () {
+//
+//     this.currentFrame.hdcp = this.currentFrame.partialScore + this.currentFrame.bonus +
+//
+// };

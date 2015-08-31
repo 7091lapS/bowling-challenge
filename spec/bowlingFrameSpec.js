@@ -22,12 +22,18 @@ describe('Bowling Frame', function() {
     expect(frame.hasSpare()).toEqual(true);
   });
 
-  // it('has a partial score without the bonuses', function() {
-  //   frame.rolls[0] = 5;
-  //   frame.rolls[1] = 4;
-  //   // frame.addPartial(frame.rolls);
-  //   expect(frame.partialScore).toEqual(9);
-  // });
+  it('has a partial score without the bonuses', function() {
+    frame.rolls[0] = 5;
+    frame.rolls[1] = 4;
+    frame.addPartial(frame.rolls);
+    expect(frame.partialScore).toEqual(9);
+  });
+
+  it('has a hdcp score', function() {
+    expect(frame.hdcp).toBeDefined();
+  });
+
+
   //
   // it('has a final score which is the sum of the rolls and the bonus points', function() {
   //   frame.bonus = 5;

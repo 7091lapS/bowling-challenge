@@ -29,38 +29,44 @@ describe('Bowling Game', function() {
     expect(function() { game.addRoll(11) }).toThrow('invalid amount of pins');
   });
 
-  it('changes currentFrame when frame is complete', function() {
-    game.addRoll(4);
-    game.addRoll(5);
-    expect(game.currentFrame === game.frames.frame2).toBeTruthy();
-  });
+  // it('changes current frame when frame has a strike', function() {
+  //    game.addRoll(10);
+  //   // expect(game.currentFrame).toEqual(game.frames.frame2);
+  //   expect(game.currentFrame === game.frames.frame2).toBeTruthy();
+  // });
 
-  it('changes current frame when frame has a strike', function() {
-    // game.addRoll(10);
-    // console.log(game.frames);
-    // game.addRoll(5);
-    // expect(game.currentFrame).toEqual(game.frames.frame2);
-    game.addRoll(4);
-    game.addRoll(5);
-    expect(game.currentFrame === game.frames.frame2).toBeTruthy();
-  });
+  // it('changes currentFrame when frame is complete', function() {
+  //   game.addRoll(4);
+  //   game.addRoll(5);
+  //   expect(game.currentFrame === game.frames.frame2).toBeTruthy();
+  // });
 
-  it('knows the previous frame', function() {
-    game.addRoll(9);
-    game.addRoll(1);
-    game.addRoll(3);
 
-    expect(game.previousFrame).toEqual(game.frames.frame1);
-  });
+
+  // it('knows the previous frame', function() {
+  //   game.addRoll(9);
+  //   game.addRoll(1);
+  //   game.addRoll(3);
+  //   expect(game.previousFrame === game.frames.frame1).toBeTruthy();
+  // });
 
   it('in case of spare, adds the bonus for the previous frame', function() {
+    game.addRoll(9);
+    game.addRoll(1);
+    game.addRoll(4);
+    expect(game.previousFrame.bonus).toEqual(4);
 
-    // game.addRoll(9);
-    // game.addRoll(1);
-    // game.addRoll(4);
-    // expect(game.previousFrame.bonus).toEqual(5);
-    // console.log(game.frames);
   });
+
+  it('sums adds up the handicap score', function() {
+    game.addRoll(9);
+    game.addRoll(1);
+    game.addRoll(5);
+    game.addRoll(4);
+    expect(game.frames.frame1.hdcp).toEqual(15);
+    expect(game.frames.frame2.hdcp).toEqual(24);
+
+  })
 
 
 });

@@ -4,6 +4,7 @@ var BowlingFrame = function() {
   this.bonus = 0;
   this.score = 0;
   this.partialScore = 0;
+  this.hdcp = 0;
 
 };
 
@@ -49,8 +50,8 @@ BowlingFrame.prototype.isFull = function () {
   };
 };
 
+////////////////////////////
 
-// BowlingFrame.prototype.addSpareBonus = function (previousFrame) {
-//     this.bonus = previousFrame.rolls[0];
-//   };
-// };
+BowlingFrame.prototype.sumHdcp = function () {
+  this.hdcp = this.partialScore + this.bonus
+};
