@@ -6,6 +6,7 @@ var BowlingFrame = function() {
   this.partialScore = 0;
   this.hdcp = 0;
 
+
 };
 
 BowlingFrame.prototype.addPartial = function () {
@@ -13,7 +14,7 @@ BowlingFrame.prototype.addPartial = function () {
     this.partialScore = 10;
   }
   else {
-    this.partialScore = (this.rolls[0] + this.rolls[1]);
+    this.partialScore = ((this.rolls[0] || 0) + (this.rolls[1] || 0));
   };
 };
 
@@ -52,6 +53,6 @@ BowlingFrame.prototype.isFull = function () {
 
 ////////////////////////////
 
-BowlingFrame.prototype.sumHdcp = function () {
-  this.hdcp = this.partialScore + this.bonus
-};
+// BowlingFrame.prototype.sumHdcp = function () {
+//   this.hdcp = this.partialScore + this.bonus
+// };
